@@ -98,7 +98,7 @@ const TimelineItem = ({
         style={{ x: xProgress, opacity: opacityProgress }}
       >
         {!isEven ? (
-          <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
+          <div className="p-4 bg-indigo-700 border border-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-20">
             <h3 className="mb-2 text-xl font-bold text-white">{item.title}</h3>
             <p className="mb-2 text-gray-400">{item.location}</p>
             <p className="text-gray-300">{item.description}</p>
@@ -123,7 +123,7 @@ export default function CenteredIconTimeline() {
   return (
     <section
       ref={containerRef}
-      className="relative flex flex-col items-center justify-center overflow-hidden"
+      className="relative flex flex-col items-center justify-center overflow-hidden "
       id="experience"
       style={{ transform: "scale(0.9" }}
     >

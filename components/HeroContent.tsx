@@ -7,7 +7,7 @@ import {
 } from "@/lib/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import ProfileCard from "./profile";
 
 const HeroContent = () => {
   return (
@@ -60,12 +60,7 @@ const HeroContent = () => {
         variants={slideInFromRight(0.8)}
         className="flex items-center justify-center w-full h-full"
       >
-        <Image
-          src="/mainIconsdark.svg"
-          alt="work icons"
-          height={650}
-          width={650}
-        />
+        <ProfileCard />
       </motion.div>
     </motion.div>
   );

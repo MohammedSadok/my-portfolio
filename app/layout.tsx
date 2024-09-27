@@ -1,8 +1,8 @@
+import StarsCanvas from "@/components/StarBackground";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import StarsCanvas from "@/components/StarBackground";
 // import { Inter } from "next/font/google";
 // const inter = Inter({ subsets: ["latin"] });
 const geistSans = localFont({
