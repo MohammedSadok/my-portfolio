@@ -3,12 +3,12 @@
 import { useRef } from "react";
 import PhoneFrame from "./phone";
 // Import all images
+import { StaticImageData } from "next/image";
 import img1 from "../public/smart_zitona/1.jpeg";
 import img2 from "../public/smart_zitona/2.jpeg";
 import img3 from "../public/smart_zitona/3.jpeg";
 import img4 from "../public/smart_zitona/4.jpeg";
 import img5 from "../public/smart_zitona/5.jpeg";
-import { StaticImageData } from "next/image";
 import MonitorFrame from "./monitor";
 
 const images: StaticImageData[] = [img1, img2, img3, img4, img5];
@@ -35,7 +35,15 @@ const Cards = () => {
         containerRef={containerRef}
         images={images}
       />
-      <MonitorFrame />
+      <MonitorFrame
+        rotate="-3deg"
+        top="-25%"
+        left="-30%"
+        color="black"
+        imageCount={5}
+        containerRef={containerRef}
+        images={images}
+      />
     </div>
   );
 };
