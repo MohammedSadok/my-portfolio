@@ -1,21 +1,13 @@
 import StarsCanvas from "@/components/StarBackground";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
-// import { Inter } from "next/font/google";
-// const inter = Inter({ subsets: ["latin"] });
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const spaceGrotesk = Space_Grotesk({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export const metadata: Metadata = {
   title: "Mohammed Sadok",
   description: "This is my portfolio",
@@ -29,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#030014] overflow-y-scroll overflow-x-hidden`}
+        className={`${spaceGrotesk.variable} antialiased bg-[#030014] overflow-y-scroll overflow-x-hidden`}
       >
         <ActiveSectionContextProvider>
           <StarsCanvas />
