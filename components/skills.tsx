@@ -9,7 +9,6 @@ import img2 from "../public/smart_zitona/2.jpeg";
 import img3 from "../public/smart_zitona/3.jpeg";
 import img4 from "../public/smart_zitona/4.jpeg";
 import img5 from "../public/smart_zitona/5.jpeg";
-import MonitorFrame from "./monitor";
 
 const images: StaticImageData[] = [img1, img2, img3, img4, img5];
 // Component for draggable cards
@@ -30,15 +29,6 @@ const Cards = () => {
         rotate="-3deg"
         top="35%"
         left="20%"
-        color="black"
-        imageCount={5}
-        containerRef={containerRef}
-        images={images}
-      />
-      <MonitorFrame
-        rotate="-3deg"
-        top="-25%"
-        left="-30%"
         color="black"
         imageCount={5}
         containerRef={containerRef}

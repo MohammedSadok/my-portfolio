@@ -1,5 +1,6 @@
 "use client";
 
+import { useSectionInView } from "@/lib/hooks";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { LuBriefcase, LuCode, LuGraduationCap } from "react-icons/lu";
@@ -41,9 +42,10 @@ const TimelineItem = ({
   item: (typeof experiencesData)[0];
   index: number;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const { ref } = useSectionInView("Experiences", 0.5);
+  const refDiv = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: refDiv,
     offset: ["start end", "center center"],
   });
 
@@ -56,58 +58,64 @@ const TimelineItem = ({
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <motion.div
-      ref={ref}
-      className="flex items-center justify-between w-full mb-8"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    >
+    <section ref={ref} id="experiences">
       <motion.div
-        className={`w-5/12 ${isEven ? "text-right" : ""} `}
-        style={{ x: xProgress, opacity: opacityProgress }}
+        ref={refDiv}
+        className="flex items-center justify-between w-full mb-8"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        {isEven ? (
-          <div className="p-4 bg-gray-800 rounded-lg shadow-lg ">
-            <h3 className="mb-2 text-xl font-bold text-white">{item.title}</h3>
-            <p className="mb-2 text-gray-400">{item.location}</p>
-            <p className="text-gray-300">{item.description}</p>
-          </div>
-        ) : (
-          <p className="text-gray-400">{item.date}</p>
-        )}
-      </motion.div>
+        <motion.div
+          className={`w-5/12 ${isEven ? "text-right" : ""} `}
+          style={{ x: xProgress, opacity: opacityProgress }}
+        >
+          {isEven ? (
+            <div className="p-4 bg-gray-800 rounded-lg shadow-lg ">
+              <h3 className="mb-2 text-xl font-bold text-white">
+                {item.title}
+              </h3>
+              <p className="mb-2 text-gray-400">{item.location}</p>
+              <p className="text-gray-300">{item.description}</p>
+            </div>
+          ) : (
+            <p className="text-gray-400">{item.date}</p>
+          )}
+        </motion.div>
 
-      <div className="flex justify-center w-2/12">
-        <div className="relative flex items-center justify-center">
-          <motion.div
-            className="relative z-10 flex items-center justify-center w-12 h-12 bg-purple-600 border-4 border-gray-900 rounded-full"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <item.icon className="text-xl text-white" />
-          </motion.div>
+        <div className="flex justify-center w-2/12">
+          <div className="relative flex items-center justify-center">
+            <motion.div
+              className="relative z-10 flex items-center justify-center w-12 h-12 bg-purple-600 border-4 border-gray-900 rounded-full"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <item.icon className="text-xl text-white" />
+            </motion.div>
+          </div>
         </div>
-      </div>
 
-      <motion.div
-        className={`w-5/12 ${!isEven ? "text-right" : ""}`}
-        style={{ x: xProgress, opacity: opacityProgress }}
-      >
-        {!isEven ? (
-          <div className="p-4 bg-indigo-700 border border-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-20">
-            <h3 className="mb-2 text-xl font-bold text-white">{item.title}</h3>
-            <p className="mb-2 text-gray-400">{item.location}</p>
-            <p className="text-gray-300">{item.description}</p>
-          </div>
-        ) : (
-          <p className="text-gray-400">{item.date}</p>
-        )}
+        <motion.div
+          className={`w-5/12 ${!isEven ? "text-right" : ""}`}
+          style={{ x: xProgress, opacity: opacityProgress }}
+        >
+          {!isEven ? (
+            <div className="p-4 bg-indigo-700 border border-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-20">
+              <h3 className="mb-2 text-xl font-bold text-white">
+                {item.title}
+              </h3>
+              <p className="mb-2 text-gray-400">{item.location}</p>
+              <p className="text-gray-300">{item.description}</p>
+            </div>
+          ) : (
+            <p className="text-gray-400">{item.date}</p>
+          )}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </section>
   );
 };
 
